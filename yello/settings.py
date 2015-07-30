@@ -37,7 +37,7 @@ SOCIAL_AUTH_ASSOCIATION_SERVER_URL_LENGTH = 16
 SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16
 SOCIAL_AUTH_ENABLED_BACKENDS = ('google','facabook')
 FACEBOOK_EXTENDED_PERMISSIONS = ['email', 'user_birthday', 'user_location']
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'first_name', 'last_name', 'locale', 'gender']
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
