@@ -28,7 +28,7 @@ FACEBOOK_APP_ID='1603562143255100'
 FACEBOOK_API_SECRET='5f5e27cb16b49658379fbf32423d319f'
 LOGIN_URL          = '/login/'
 LOGIN_REDIRECT_URL = '/members/'
-LOGIN_ERROR_URL    = '/login-error/'
+LOGIN_ERROR_URL    = '/error/'
 SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'
 SOCIAL_AUTH_UID_LENGTH = 16
 SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16
@@ -36,6 +36,8 @@ SOCIAL_AUTH_NONCE_SERVER_URL_LENGTH = 16
 SOCIAL_AUTH_ASSOCIATION_SERVER_URL_LENGTH = 16
 SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16
 SOCIAL_AUTH_ENABLED_BACKENDS = ('google','facabook')
+FACEBOOK_EXTENDED_PERMISSIONS = ['email', 'user_birthday', 'user_location']
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'first_name', 'last_name', 'locale', 'gender']
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -77,6 +79,16 @@ MIDDLEWARE_CLASSES = (
 )
 
 SESSION_SERIALIZER='django.contrib.sessions.serializers.PickleSerializer'
+
+SOCIAL_AUTH_PIPELINE = (
+    'social_auth.backends.pipeline.social.social_auth_user',
+    'social_auth.backends.pipeline.user.get_username',
+    'social_auth.backends.pipeline.misc.save_status_to_session',
+    'social_auth.backends.pipeline.user.create_user',
+    'social_auth.backends.pipeline.social.associate_user',
+    'social_auth.backends.pipeline.social.load_extra_data',
+    'social_auth.backends.pipeline.user.update_user_details'
+)
 
 
 ROOT_URLCONF = 'yello.urls'

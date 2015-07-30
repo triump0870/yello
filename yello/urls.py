@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from dating.views import HomePage, MemberPage, LogoutPage
+from dating.views import HomePage, MemberPage, LogoutPage, ErrorPage
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', HomePage.as_view()),
     url(r'', include('social_auth.urls')),
     url(r'^members/', MemberPage.as_view(), name='members'),
     url(r'^logout/$', LogoutPage, name='logout'),
+    url(r'^error/', ErrorPage, name='error'),
 ]

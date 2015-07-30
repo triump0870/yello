@@ -13,3 +13,8 @@ class MemberPage(TemplateView):
 def LogoutPage(request):
 	auth_logout(request)
 	return redirect('/')
+
+def ErrorPage(request):
+	print request
+	auth_logout(request)
+	redirect('/')
